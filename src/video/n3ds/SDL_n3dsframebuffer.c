@@ -117,7 +117,9 @@ CopyFramebuffertoN3DS(u32 *dest, const Dimensions dest_dim, const u32 *source, c
 SDL_FORCE_INLINE int
 GetDestOffset(int x, int y, int dest_width)
 {
-    return dest_width - y - 1 + dest_width * x;
+    //return dest_width - y - 1 + dest_width * x;
+    //return dest_width - (y + (240 / 12)) - 1 + dest_width * (x + (400 / 10));
+    return dest_width - (y + ((240 * 0x1556) >> 16)) - 1 + dest_width * (x + ((400 * 0x199A) >> 16));
 }
 
 SDL_FORCE_INLINE int
